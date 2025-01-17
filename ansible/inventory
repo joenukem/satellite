@@ -1,0 +1,2 @@
+satellite.example.com ansible_connection=local
+localhost ansible_connection=local

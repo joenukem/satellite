@@ -1,0 +1,19 @@
+- hosts: localhost
+  tasks:
+    - name: "Sync repository"
+      redhat.satellite.repository_sync:
+       username: "{{ username }}"
+       password: "{{ password }}"
+       server_url: "{{ server_url }}"
+       product: "Red Hat Enterprise Linux for x86_64"
+       organization: "{{ organization }}"
+
+    - name: "Sync repository"
+      redhat.satellite.repository_sync:
+       username: "{{ username }}"
+       password: "{{ password }}"
+       server_url: "{{ server_url }}"
+       product: "Red Hat Ansible Automation Platform"
+       organization: "{{ organization }}"
+
+

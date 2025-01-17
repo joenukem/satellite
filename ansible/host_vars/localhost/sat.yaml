@@ -1,0 +1,4 @@
+username: "admin"
+password: "redhat"
+server_url: "https://satellite.example.com"
+organization: "ACME Inc"

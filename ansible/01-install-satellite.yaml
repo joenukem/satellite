@@ -1,0 +1,12 @@
+- hosts: satellite.example.com
+  gather_facts: true 
+  become: true
+  vars:
+  roles:
+    - role: redhat.satellite_operations.installer
+      vars:
+        satellite_installer_scenario: satellite
+        satellite_installer_package: satellite-installer
+        satellite_installer_options:
+          - '--foreman-initial-organization "ACME Inc"'
+          - '--foreman-initial-admin-password redhat'

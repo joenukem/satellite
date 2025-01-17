@@ -1,0 +1,17 @@
+- hosts: localhost
+  tasks:
+    - name: "Create client activation key"
+      redhat.satellite.activation_key:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        server_url: "{{ server_url }}"
+        organization: "{{ organization }}"
+        state: present
+
+        name: "RHEL9"
+        lifecycle_environment: "Development"
+        content_view: 'RHEL9'
+        host_collections:
+         - Foo
+        release_version: 9 
+        service_level: Self-Support

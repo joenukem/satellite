@@ -1,0 +1,12 @@
+- hosts: localhost
+  tasks:
+    - name: "Sync repository"
+      redhat.satellite.repository_sync:
+       username: "{{ username }}"
+       password: "{{ password }}"
+       server_url: "{{ server_url }}"
+       product: "EPEL 9"
+       organization: "{{ organization }}"
+
+
+

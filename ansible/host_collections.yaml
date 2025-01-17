@@ -1,0 +1,14 @@
+- hosts: localhost
+  tasks:
+  - name: "Create Foo host collection"
+    redhat.satellite.host_collection:
+
+      username: "{{ username }}"
+      password: "{{ password }}"
+      server_url: "{{ server_url }}"
+      organization: "{{ organization }}"
+
+      name: "Foo"
+      description: "Foo host collection for Foo servers"
+      state: present
+ 

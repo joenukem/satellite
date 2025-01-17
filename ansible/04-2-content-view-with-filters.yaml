@@ -1,0 +1,44 @@
+- hosts: localhost
+  tasks:
+  - name: "Create or update Fedora content view"
+    redhat.satellite.content_view:
+      username: "{{ username }}"
+      password: "{{ password }}"
+      server_url: "{{ server_url }}"
+      organization: "{{ organization }}"
+
+      name: "Fedora EPEL 389"
+      repositories:
+        - name: 'EPEL 9'
+          product: 'EPEL 9'
+
+
+  - name: Ensure the filter exists
+    redhat.satellite.content_view_filter:
+      username: "{{ username }}"
+      password: "{{ password }}"
+      server_url: "{{ server_url }}"
+      organization: "{{ organization }}"
+
+      name: "filter for ldap server package"
+      content_view: "Fedora EPEL 389"
+      filter_type: rpm
+      inclusion: true
+
+
+  - name: "Content View Filter Rule for 389"
+    redhat.satellite.content_view_filter_rule:
+      username: "{{ username }}"
+      password: "{{ password }}"
+      server_url: "{{ server_url }}"
+      organization: "{{ organization }}"
+
+      validate_certs: "true"
+      content_view: "Fedora EPEL 389"
+      content_view_filter: "filter for ldap server package"
+      name: "asterisk*"
+  #    stream: "next"
+  #    version: "820220325123957"
+  #      context: "9edba152"
+      state: present
+

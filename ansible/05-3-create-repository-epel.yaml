@@ -1,0 +1,17 @@
+- hosts: localhost
+  tasks:
+    - name: "Create repository"
+      redhat.satellite.repository:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        server_url: "{{ server_url }}"
+        organization: "{{ organization }}"
+        
+        name: "EPEL 9"
+        state: present
+        content_type: "yum"
+        product: "EPEL 9"
+        url: "https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/"
+        mirror_on_sync: true
+        download_policy: on_demand 
+

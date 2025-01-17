@@ -1,0 +1,42 @@
+- hosts: localhost
+  tasks:
+    - name: "Add a development lifecycle environment"
+      redhat.satellite.lifecycle_environment:
+       username: "{{ username }}"
+       password: "{{ password }}"
+       server_url: "{{ server_url }}"
+       organization: "{{ organization }}"
+
+       name: "Development"
+       label: "development"
+       prior: "Library"
+       description: "The production environment"
+       state: "present"
+
+    - name: "Add a QA lifecycle environment"
+      redhat.satellite.lifecycle_environment:
+       username: "{{ username }}"
+       password: "{{ password }}"
+       server_url: "{{ server_url }}"
+       organization: "{{ organization }}"
+
+       name: "QA"
+       label: "qa"
+       prior: "Development"
+       description: "The QA environment"
+       state: "present"
+
+    - name: "Add a production lifecycle environment"
+      redhat.satellite.lifecycle_environment:
+       username: "{{ username }}"
+       password: "{{ password }}"
+       server_url: "{{ server_url }}"
+       organization: "{{ organization }}"
+
+       name: "Production"
+       label: "production"
+       prior: "QA"
+       description: "The production environment"
+       state: "present"
+
+

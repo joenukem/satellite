@@ -1,0 +1,11 @@
+- hosts: localhost
+  tasks:
+
+  - name: "Upload the RHEL developer edition manifest"
+    redhat.satellite.subscription_manifest:
+      username: "admin"
+      password: "redhat"
+      server_url: "https://satellite.example.com"
+      organization: "ACME Inc"
+      state: present
+      manifest_path: "files/manifest.zip"

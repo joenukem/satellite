@@ -1,0 +1,12 @@
+- hosts: localhost
+  tasks:
+  - name: "Create Fedora Epel GPG key"
+    redhat.satellite.content_credential:
+      username: "{{ username }}"
+      password: "{{ password }}"
+      server_url: "{{ server_url }}"
+      organization: "{{ organization }}"
+
+      name: "EPEL-GPG-KEY"
+      content_type: gpg_key
+      content: "{{ lookup('file', 'files/RPM-GPG-KEY-EPEL-9') }}"

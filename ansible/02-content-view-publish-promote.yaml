@@ -1,0 +1,14 @@
+- hosts: localhost
+  tasks:
+  - name: "Publish a content view and promote that version to Library & Dev, not idempotent"
+    redhat.satellite.content_view_version:
+      username: "{{ username }}"
+      password: "{{ password }}"
+      server_url: "{{ server_url }}"
+      organization: "{{ organization }}"
+          
+      content_view: "RHEL9"
+      lifecycle_environments:
+        - Library
+        - Development
+

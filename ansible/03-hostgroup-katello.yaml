@@ -1,0 +1,16 @@
+- hosts: localhost
+  tasks:
+   - name: "My katello related hostgroup"
+     redhat.satellite.hostgroup:
+       username: "{{ username }}"
+       password: "{{ password }}"
+       server_url: "{{ server_url }}"
+       organization: "{{ organization }}"
+
+       name: "RHEL9 hosts"
+       content_source: satellite.example.com
+       lifecycle_environment: "Development"
+       content_view: "RHEL9"
+       parameters:
+        - name: "kt_activation_keys"
+          value: "RHEL9"
